@@ -186,3 +186,25 @@ input[type="text"], input[type="password"], input[type="email"], textarea{
 .delete--btn:hover{
   color:red;
 }
+
+.loading{
+  min-height:100vh;
+  display: grid;
+  
+}
+
+.loading .spinner{
+  width:100px;
+  height:100px;
+  place-self:center;
+  border:5px solid transparent;
+  border-top-color:rgba(219,26,90,1);
+  border-radius:50%;
+  animation:rotate 1s infinite;
+}
+
+@keyframes rotate {
+  100%{
+      transform:rotate(360deg);
+  }
+}
