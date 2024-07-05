@@ -101,7 +101,7 @@ const Room = () => {
             DATABASE_ID,
             COLLECTION_ID_MESSAGES,
             [
-                Query.orderDesc('$createdAt'),
+                Query.orderAsc('$createdAt'),
                 Query.limit(100),
             ]
         )
@@ -191,24 +191,6 @@ const Room = () => {
 
         <div className="room--container">
 
-            {/* for texting messages:- */}
-            <form id="message--form" onSubmit={handleSubmit}>
-                <div>
-                    <textarea 
-                        required 
-                        maxLength={250}
-                        placeholder="Say something..." 
-                        onChange={(e) => {setMessageBody(e.target.value)}}
-                        value={messageBody}
-                        ></textarea>
-                </div>
-
-                <div className="send-btn--wrapper">
-                    <input className="btn btn--secondary" type="submit" value="send"/>
-                </div>
-            </form>
-            
-
             <div>
                 {messages.map(message => (
                     // In appwrite,id stores as "$id" , just like in mongoDb it stores as "_id"
@@ -248,6 +230,23 @@ const Room = () => {
                     </div>
                 ))}
             </div>
+
+            {/* for texting messages:- */}
+            <form id="message--form" onSubmit={handleSubmit}>
+                <div>
+                    <textarea 
+                        required 
+                        maxLength={250}
+                        placeholder="Say something..." 
+                        onChange={(e) => {setMessageBody(e.target.value)}}
+                        value={messageBody}
+                        ></textarea>
+                </div>
+
+                <div className="send-btn--wrapper">
+                    <input className="btn btn--secondary" type="submit" value="send"/>
+                </div>
+            </form>
 
         </div>
     </main>

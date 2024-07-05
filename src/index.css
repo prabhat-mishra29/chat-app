@@ -134,6 +134,7 @@ input[type="text"], input[type="password"], input[type="email"], textarea{
   display: flex;
   flex-direction: column;
   gap: 0.5em;
+  margin-top:40px;
 }
 
 .send-btn--wrapper{
