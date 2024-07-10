@@ -178,7 +178,9 @@ const Room = () => {
                 '<DOCUMENT_ID>' // documentId
             );
         */
-        await databases.deleteDocument(DATABASE_ID, COLLECTION_ID_MESSAGES, id);
+        const response = await databases.deleteDocument(DATABASE_ID, COLLECTION_ID_MESSAGES, id);
+
+        // console.log("delete response : ",response);
 
         //no need to change because it was handled in "unsubscribe()".
         //setMessages(prevState => prevState.filter(message => message.$id !== id))
