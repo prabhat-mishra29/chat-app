@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import client, { databases, DATABASE_ID, COLLECTION_ID_MESSAGES } from '../appwriteConfig'
+import {databases, DATABASE_ID, COLLECTION_ID_MESSAGES ,client} from '../appwriteConfig'
 import { ID, Query, Permission, Role} from 'appwrite';
 import Header from '../Components/Header';
 import { useAuth } from '../utils/AuthContext';
@@ -36,6 +36,7 @@ const Room = () => {
     */
 
     useEffect(() => {
+        
         getMessages();
       
         /*
@@ -66,7 +67,10 @@ const Room = () => {
                 setMessages(prevState => prevState.filter(message => message.$id !== response.payload.$id))
                 //message is nothing but a document consists of [username,user_id and body] and each meassage has an '$id'
             }
-        });
+        },error => {
+            console.log(error)
+        }
+    );
 
         // console.log('unsubscribe:', unsubscribe)
       
