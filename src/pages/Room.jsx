@@ -48,35 +48,35 @@ const Room = () => {
         // callback will be executed on any create/update/delete events to any document in a collection.
         // study about real-time implementation of appwrite from the docs.
 
-        // const unsubscribe = client.subscribe(
-        //     `databases.${DATABASE_ID}.collections.${COLLECTION_ID_MESSAGES}.documents`, 
-        //     response => {
-        //         console.log("response realtime : ",response);
+        const unsubscribe = client.subscribe(
+            `databases.${DATABASE_ID}.collections.${COLLECTION_ID_MESSAGES}.documents`, 
+            response => {
+                console.log("response realtime : ",response);
 
-        //         /*
-        //             response : channels , events , payload , timestamp etc..
-        //         */
+                /*
+                    response : channels , events , payload , timestamp etc..
+                */
 
-        //         if(response.events.includes("databases.*.collections.*.documents.*.create")){
-        //             console.log('A MESSAGE WAS CREATED')
-        //             setMessages(prevState => [response.payload, ...prevState])
-        //         }
+                if(response.events.includes("databases.*.collections.*.documents.*.create")){
+                    console.log('A MESSAGE WAS CREATED')
+                    setMessages(prevState => [response.payload, ...prevState])
+                }
 
-        //         if(response.events.includes("databases.*.collections.*.documents.*.delete")){
-        //             console.log('A MESSAGE WAS DELETED!!!')
-        //             setMessages(prevState => prevState.filter(message => message.$id !== response.payload.$id))
-        //             //message is nothing but a document consists of [username,user_id and body] and each meassage has an '$id'
-        //         }
-        //     }
-        // );
+                if(response.events.includes("databases.*.collections.*.documents.*.delete")){
+                    console.log('A MESSAGE WAS DELETED!!!')
+                    setMessages(prevState => prevState.filter(message => message.$id !== response.payload.$id))
+                    //message is nothing but a document consists of [username,user_id and body] and each meassage has an '$id'
+                }
+            }
+        );
 
-        // // console.log('unsubscribe:', unsubscribe)
+        // console.log('unsubscribe:', unsubscribe)
       
-        // // clean up function:-
-        // // when useEffect unmounts,we are going to  unsubscribe and then resubscribe on that final iteration so we have only one subscription  to this collection.
-        // return () => {
-        //   unsubscribe();
-        // };
+        // clean up function:-
+        // when useEffect unmounts,we are going to  unsubscribe and then resubscribe on that final iteration so we have only one subscription  to this collection.
+        return () => {
+          unsubscribe();
+        };
       }, [messages]);
 
 
@@ -165,7 +165,7 @@ const Room = () => {
         console.log('CREATED RESPONSE:', response)
 
         // no need to change because it was handled in "unsubscribe()".
-        setMessages(prevState => [response, ...prevState])
+        // setMessages(prevState => [response, ...prevState])
 
         setMessageBody('')
     }
@@ -183,7 +183,7 @@ const Room = () => {
         // console.log("delete response : ",response);
 
         //no need to change because it was handled in "unsubscribe()".
-        setMessages(prevState => prevState.filter(message => message.$id !== id))
+        //setMessages(prevState => prevState.filter(message => message.$id !== id))
      } 
 
   return (
