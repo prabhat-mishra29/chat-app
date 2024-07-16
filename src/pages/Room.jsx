@@ -105,10 +105,43 @@ const Room = () => {
                 Query.limit(100),
             ]
         )
-        console.log(response);
+        //console.log(response);
         /*
-            response:{total,documents}
-            documents:{body,username,user_id,$id,$collectionId etc..}
+        {
+            "total": 2,
+            "documents": [
+                {
+                    "user_id": "66871886003757bb22b0",
+                    "username": "Prabhat Mishra ",
+                    "body": "gg",
+                    "$id": "66961398003248eb4ef3",
+                    "$tenant": "161134",
+                    "$createdAt": "2024-07-16T06:30:55.459+00:00",
+                    "$updatedAt": "2024-07-16T06:30:55.459+00:00",
+                    "$permissions": [
+                        "update(\"user:66871886003757bb22b0\")",
+                        "delete(\"user:66871886003757bb22b0\")"
+                    ],
+                    "$databaseId": "66844ae10039f9f1e451",
+                    "$collectionId": "66844af300084549cc36"
+                },
+                {
+                    "user_id": "66871886003757bb22b0",
+                    "username": "Prabhat Mishra ",
+                    "body": "what about today?",
+                    "$id": "669610c2002ca36855b1",
+                    "$tenant": "161134",
+                    "$createdAt": "2024-07-16T06:18:48.409+00:00",
+                    "$updatedAt": "2024-07-16T06:18:48.409+00:00",
+                    "$permissions": [
+                        "update(\"user:66871886003757bb22b0\")",
+                        "delete(\"user:66871886003757bb22b0\")"
+                    ],
+                    "$databaseId": "66844ae10039f9f1e451",
+                    "$collectionId": "66844af300084549cc36"
+                }
+            ]
+        }
         */
         setMessages(response.documents)
     }
