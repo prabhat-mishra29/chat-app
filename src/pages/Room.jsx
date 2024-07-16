@@ -77,7 +77,7 @@ const Room = () => {
         return () => {
           unsubscribe();
         };
-      }, []);
+      }, [messages]);
 
 
     
