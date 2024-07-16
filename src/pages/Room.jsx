@@ -105,7 +105,7 @@ const Room = () => {
                 Query.limit(100),
             ]
         )
-        //console.log(response);
+        console.log(response);
         /*
         {
             "total": 2,
