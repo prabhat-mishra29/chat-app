@@ -67,10 +67,7 @@ const Room = () => {
                 setMessages(prevState => prevState.filter(message => message.$id !== response.payload.$id))
                 //message is nothing but a document consists of [username,user_id and body] and each meassage has an '$id'
             }
-        },error => {
-            console.log(error)
-        }
-    );
+        });
 
         // console.log('unsubscribe:', unsubscribe)
       
