@@ -190,7 +190,6 @@ input[type="text"], input[type="password"], input[type="email"], textarea{
 .loading{
   min-height:100vh;
   display: grid;
-  
 }
 
 .loading .spinner{
